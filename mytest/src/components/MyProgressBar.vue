@@ -1,6 +1,6 @@
 <template>
  <div class="progressbar">
-  <span>{{width}}%</span>
+    <span>{{width}}%</span>
     <div class="progressbar-wrapper">
     <div class="progressbar advance" :style="btnStyles"></div>
     </div>
@@ -44,6 +44,7 @@ export default {
 }
 
 .advance {  
-  width: 100%;
+  background: var(--bgColor);
+  width: var(--width);
 }
 </style>

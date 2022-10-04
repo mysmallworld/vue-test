@@ -7,27 +7,19 @@
     <div class="allprogressbar">  
     <div class="firstprogressbar">  
     <h2>Initalisation du test technique</h2>
-
-    <div class="row">
     <MyProgressBar/>
-    </div>
-
     </div>
 
     <div class="secondprogressbar">
     <h2>Avancement de la phase de développement</h2>
-
-    <div class="row">
-    <MySecondProgressBar/>
-    </div>
+    <MyProgressBar/>
     </div> 
-    
     </div>
 
 <div class="mybuttons">
-    <button class="buttons" @click="reinitialize()">Remettre à zéro les compteurs</button>
-    <button class="buttons" @click="addfive()">Ajouter 5%</button>
-    <button class="buttons" @click="addten()">Ajouter 10%</button>
+    <button class="buttons" @click="reinitialize(width, bgColor)">Remettre à zéro les compteurs</button>
+    <button class="buttons" @click="addfive(width, bgColor)">Ajouter 5%</button>
+    <button class="buttons" @click="addten(width, bgColor)">Ajouter 10%</button>
 </div>
 
 </div>
@@ -35,28 +27,32 @@
 
 <script>
 import MyProgressBar from '../components/MyProgressBar.vue'
-import MySecondProgressBar from '../components/MySecondProgressBar.vue'
 
 export default {
   name: 'App',
   components: {
-    MyProgressBar,
-    MySecondProgressBar
+    MyProgressBar
   },
   data: function () {
-    
+    if(0 < this.width > 25)return this.bgColor = "#7160E8";
+    if(25 < this.width > 50)return this.bgColor = "#6DADE8";
+    if(50 < this.width > 75)return this.bgColor = "#60E8B6";
+    if(75 < this.width > 100)return this.bgColor = "#30DB63";
+
     return {
-      progressbar: 50,
+    bgColor: "#303030",
+    width: 0,
     }
   },  methods: {
   reinitialize: function () {
-    this.progressbar = 0;
+    this.bgColor = "#303030";
+    this.width = 0;
   },
   addfive: function () {
-    this.progressbar += 5;
+    this.width += 5;
   },
   addten: function () {
-    this.progressbar += 10;
+    this.width += 10;
   }
   }
 }
@@ -88,6 +84,11 @@ h2 {
     margin: auto;
     padding: 80px;
 }
+
+.secondprogressbar {
+    padding-top: 10px;
+}
+
 
 /*Bouttons*/
 .mybuttons {
