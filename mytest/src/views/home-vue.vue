@@ -7,12 +7,19 @@
     <div class="allprogressbar">  
     <div class="firstprogressbar">  
     <h2>Initalisation du test technique</h2>
+
+    <div class="row">
     <MyProgressBar/>
+    </div>
+
     </div>
 
     <div class="secondprogressbar">
     <h2>Avancement de la phase de développement</h2>
+
+    <div class="row">
     <MySecondProgressBar/>
+    </div>
     </div> 
     
     </div>
@@ -37,12 +44,19 @@ export default {
     MySecondProgressBar
   },
   data: function () {
+    
     return {
       progressbar: 50,
     }
   },  methods: {
   reinitialize: function () {
-    this.progressbar++;
+    this.progressbar = 0;
+  },
+  addfive: function () {
+    this.progressbar += 5;
+  },
+  addten: function () {
+    this.progressbar += 10;
   }
   }
 }

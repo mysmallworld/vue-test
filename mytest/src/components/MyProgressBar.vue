@@ -1,22 +1,33 @@
 <template>
  <div class="progressbar">
+  <span>{{width}}%</span>
     <div class="progressbar-wrapper">
-    <div class="progressbar advance" style="width: 50%" data-perc="50%"></div>
+    <div class="progressbar advance" :style="btnStyles"></div>
     </div>
     </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      progressbar: 0,
+ name: 'SimpleButton',
+  props: {
+    bgColor: {
+      type: String,
+      default: "#6DADE8"
+    },
+    width: {
+      type: Number,
+      default: 50
     }
-  },  methods: {
-  subscribe: function () {
-    this.progressbar++;
-  }
-  }
+  },
+  computed: {
+    btnStyles() {
+      return {
+        "background-color": this.bgColor,
+        width: `${this.width}%`
+      };
+    }
+  } 
 }
 </script>
 
@@ -33,7 +44,6 @@ export default {
 }
 
 .advance {  
-  background-color: #6DADE8;
   width: 100%;
 }
 </style>
